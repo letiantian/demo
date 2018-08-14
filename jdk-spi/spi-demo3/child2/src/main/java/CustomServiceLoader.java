@@ -10,15 +10,7 @@ public class CustomServiceLoader<S> {
 
     private static final String PREFIX = "META-INF/services/";
 
-    private final ClassLoader loader;
-
-    private final Class<S> service;
-
-    private CustomServiceLoader(Class<S> serviceInterface, ClassLoader loader) {
-        this.loader = loader;
-        this.service = serviceInterface;
-    }
-
+    // 读取 META-INF/services/ 下文件的内容，返回由每一行内容组成的List
     private static List<String> parseConfigFile(URL configURL) throws Exception {
         InputStream in = configURL.openStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(in, "utf-8"));
@@ -29,7 +21,7 @@ public class CustomServiceLoader<S> {
                 int ci = line.indexOf('#');  // `#`字符后的内容是注释
                 if (ci >= 0) line = line.substring(0, ci);
                 line = line.trim();
-                if (line.length()>0) {
+                if (line.length()>0) {  // 空行就不要了
                     names.add(line);
                 }
             } else {
@@ -39,9 +31,12 @@ public class CustomServiceLoader<S> {
         return names;
     }
 
+    // 得到参数 service 的所有实现类的实例
     public static <S> List<S> load(Class<S> service) throws Exception {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         String fullName = PREFIX + service.getName();
+
+        // 符合要求的文件可能不止一个
         Enumeration<URL> configs = ClassLoader.getSystemResources(fullName);
 
         List<S> instanceList = new ArrayList<>();
@@ -56,8 +51,6 @@ public class CustomServiceLoader<S> {
             }
         }
         return instanceList;
-
     }
-
 
 }
