@@ -21,7 +21,6 @@ public class TransactionExample {
     }
 
     public void insert(Connection connection, String name, Long balance) throws SQLException {
-
         PreparedStatement pstmt = null;
         try {
             pstmt = connection.prepareStatement("INSERT INTO user_balance(name, balance) VALUES(?, ?)");
@@ -57,6 +56,7 @@ public class TransactionExample {
             insert(connection, "letian", 10000L);
             insert(connection, "xiaosi", 10000L);
             raiseException(true); // 产生一个异常
+            System.out.println("commit");
             connection.commit();
         } catch (Exception ex) {
             System.out.println("rollback");
@@ -72,6 +72,7 @@ public class TransactionExample {
             insert(connection, "letian", 10000L);
             insert(connection, "xiaosi", 10000L);
             raiseException(false); // 不产生异常
+            System.out.println("commit");
             connection.commit();
         } catch (Exception ex) {
             System.out.println("rollback");
