@@ -1,4 +1,4 @@
-package proxy01;
+package demo04;
 
 public interface IHello {
 

@@ -1,4 +1,4 @@
-package proxy04;
+package demo05;
 
 public class HelloAndHelloWorldImpl implements IHello, IHelloWorld {
     @Override

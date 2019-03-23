@@ -1,22 +1,15 @@
-package proxy02;
+package demo01;
 
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 public class CustomInvocationHandler implements InvocationHandler {
 
     private Object target;
+
     public CustomInvocationHandler(Object target) {
         this.target=target;
-    }
-
-    public static Object getProxy(Object target) {
-        ClassLoader classLoader = target.getClass().getClassLoader();
-        Class<?>[] interfaces = target.getClass().getInterfaces();
-        CustomInvocationHandler handler = new CustomInvocationHandler(target);
-        return Proxy.newProxyInstance(classLoader, interfaces, handler);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package proxy03;
+package demo04;
 
 public class HelloImpl implements IHello {
     @Override

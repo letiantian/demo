@@ -1,8 +1,6 @@
-package proxy04;
+package demo05;
 
 import org.junit.Test;
-
-import java.lang.reflect.Proxy;
 
 public class Main {
     @Test

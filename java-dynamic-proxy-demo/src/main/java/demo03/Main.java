@@ -1,8 +1,6 @@
-package proxy03;
+package demo03;
 
 import org.junit.Test;
-
-import java.lang.reflect.Proxy;
 
 public class Main {
     @Test
@@ -10,7 +8,5 @@ public class Main {
         HelloImpl helloImpl = new HelloImpl();
         IHello hello = (IHello) CustomInvocationHandler.getProxy(helloImpl);
         hello.hello();
-        hello.hi();
     }
-
 }

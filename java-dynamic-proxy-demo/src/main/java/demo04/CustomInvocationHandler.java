@@ -1,4 +1,4 @@
-package proxy03;
+package demo04;
 
 
 import java.lang.reflect.InvocationHandler;
@@ -15,7 +15,7 @@ public class CustomInvocationHandler implements InvocationHandler {
     public static Object getProxy(Object target) {
         ClassLoader classLoader = target.getClass().getClassLoader();
         Class<?>[] interfaces = target.getClass().getInterfaces();
-        proxy02.CustomInvocationHandler handler = new proxy02.CustomInvocationHandler(target);
+        demo02.CustomInvocationHandler handler = new demo02.CustomInvocationHandler(target);
         return Proxy.newProxyInstance(classLoader, interfaces, handler);
     }
 

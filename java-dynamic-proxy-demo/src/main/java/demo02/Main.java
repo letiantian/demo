@@ -1,12 +1,10 @@
-package proxy01;
-
-import org.junit.Test;
+package demo02;
 
 import java.lang.reflect.Proxy;
 
 public class Main {
-    @Test
-    public void test() {
+
+    public static void main(String[] args) {
         HelloImpl helloImpl = new HelloImpl();
         ClassLoader classLoader = HelloImpl.class.getClassLoader();
         Class<?>[] interfaces = new Class[] { IHello.class };
