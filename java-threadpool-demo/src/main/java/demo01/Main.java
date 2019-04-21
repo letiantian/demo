@@ -38,12 +38,12 @@ public class Main {
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         System.out.println("开始前：" + getCurrentTimestamp());
         service.schedule(()-> {
-            System.out.println( getCurrentTimestamp() );
+            System.out.println( "1： " + getCurrentTimestamp() );
         }, 3, TimeUnit.SECONDS);
 
         service.schedule(()-> {
-            System.out.println( getCurrentTimestamp() );
-        }, 4, TimeUnit.SECONDS);
+            System.out.println( "2：" + getCurrentTimestamp() );
+        }, 2, TimeUnit.SECONDS);
 
         service.shutdown();
         service.awaitTermination(10, TimeUnit.SECONDS);
