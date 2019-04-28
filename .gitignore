@@ -5,3 +5,7 @@
 **/build
 **/*.iml
 **/out
+**/.classpath
+**/.project
+**/.settings
+**/bin
